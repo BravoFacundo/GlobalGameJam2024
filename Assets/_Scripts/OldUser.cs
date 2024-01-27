@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class User : MonoBehaviour
+public class OldUser : MonoBehaviour
 {
     [Header("Debug")]
     [SerializeField] bool likeButton;
