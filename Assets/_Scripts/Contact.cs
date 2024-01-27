@@ -10,17 +10,11 @@ public class Message
 }
 public class Contact : MonoBehaviour
 {
+
+    public string username;
+    public Sprite image;
     
-    [SerializeField] List<Message> chat = new();
+    public List<Message> chat = new();
 
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
