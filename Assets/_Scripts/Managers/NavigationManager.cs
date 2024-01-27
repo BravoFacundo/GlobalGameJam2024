@@ -4,16 +4,29 @@ using UnityEngine;
 
 public class NavigationManager : MonoBehaviour
 {
+    [SerializeField] int startIndex;
     [SerializeField] List<GameObject> screens;
     
     void Start()
     {
-        ChangeScreenByIndex(0);
+        ChangeScreenByIndex(startIndex);
     }
 
     void Update()
     {
         DebugInput();
+    }
+
+    public void ChangeScreenByIndex(int index)
+    {
+        if (index >= 0 && index < screens.Count)
+        {
+            for (int i = 0; i < screens.Count; i++)
+            {
+                screens[i].SetActive(i == index);
+            }
+        }
+        else Debug.LogError("Índice fuera de los límites de la lista.");
     }
 
     void DebugInput()
@@ -30,17 +43,5 @@ public class NavigationManager : MonoBehaviour
         {
             ChangeScreenByIndex(2);
         }
-    }
-
-    public void ChangeScreenByIndex(int index)
-    {
-        if (index >= 0 && index < screens.Count)
-        {
-            for (int i = 0; i < screens.Count; i++)
-            {
-                screens[i].SetActive(i == index);
-            }
-        }
-        else Debug.LogError("Índice fuera de los límites de la lista.");
     }
 }
