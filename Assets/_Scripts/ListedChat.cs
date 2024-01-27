@@ -6,8 +6,7 @@ using TMPro;
 
 public class ListedChat : MonoBehaviour
 {
-    [Header("Debug")]
-    [SerializeField] Contact contact;
+    public Contact contact;
 
     [Header("Components")]
     [SerializeField] Image image;
@@ -15,23 +14,15 @@ public class ListedChat : MonoBehaviour
     [SerializeField] TMP_Text description;
     [SerializeField] TMP_Text time;
 
-    private void Awake()
+    private void Start()
     {
-        
+        StartCoroutine(Fuck());
     }
 
-    void Start()
+    private IEnumerator Fuck()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (contact != null)
-        {
-            image.sprite = contact.image;
-            username.text = contact.username;
-        }
+        yield return new WaitForEndOfFrame();
+        image.sprite = contact.image;
+        username.text = contact.username;
     }
 }

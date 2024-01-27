@@ -10,11 +10,8 @@ public class Message
 }
 public class Contact : MonoBehaviour
 {
-
     public string username;
-    public Sprite image;
-    
+    public Sprite image;    
     public List<Message> chat = new();
-
 
 }
