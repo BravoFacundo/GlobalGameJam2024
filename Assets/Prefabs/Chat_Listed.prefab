@@ -85,11 +85,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2249140488730475481}
   - component: {fileID: 2201256112207174811}
-  - component: {fileID: 6391483001488590737}
   - component: {fileID: 6785657344146051325}
+  - component: {fileID: 6391483001488590737}
   - component: {fileID: 5617271627166337192}
   m_Layer: 5
-  m_Name: ListedChat
+  m_Name: Chat_Listed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,7 +102,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1172299896435477723}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -126,6 +126,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1172299896435477723}
   m_CullTransparentMesh: 1
+--- !u!114 &6785657344146051325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172299896435477723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a3459e3d9ded349880e69969ca060c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contact: {fileID: 0}
+  bgImage: {fileID: 6391483001488590737}
+  image: {fileID: 4015028420284734205}
+  username: {fileID: 334873608409056426}
+  description: {fileID: 3889891599305392439}
+  time: {fileID: 7184221523741467521}
+  chat_Expanded: {fileID: 0}
+  chat_Messages: {fileID: 0}
+  messagePrefab_Meme: {fileID: 2204689186856660978, guid: 5405951be047da54aac63611b8cae28e, type: 3}
+  messagePrefab_Warning: {fileID: 6511485909233330832, guid: 34c682429f9ed49419e9ba7a715fb308, type: 3}
+  messagePrefab_Angry: {fileID: 3138218898408945246, guid: 65c65c3c2959df64ba31fdde43d55ba4, type: 3}
+  messagePrefab_Block: {fileID: 1772624591965099965, guid: 7cc26a3a6286efb4d85c18572972f5ab, type: 3}
 --- !u!114 &6391483001488590737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,23 +180,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6785657344146051325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1172299896435477723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0a3459e3d9ded349880e69969ca060c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  contact: {fileID: 0}
-  image: {fileID: 4015028420284734205}
-  username: {fileID: 334873608409056426}
-  description: {fileID: 0}
-  time: {fileID: 0}
 --- !u!114 &5617271627166337192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +223,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6391483001488590737}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6785657344146051325}
+        m_TargetAssemblyTypeName: Chat_Listed, Assembly-CSharp
+        m_MethodName: OnButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4950944238916805983
 GameObject:
   m_ObjectHideFlags: 0
