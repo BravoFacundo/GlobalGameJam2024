@@ -4,12 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Message_Warning : MonoBehaviour
+public class Message_Warning : Message_OnChat
 {
-    [Header("Message")]
-    public Contact contact;
-    public Message message;
-
     [Header("Components")]
     [SerializeField] Image bgImage;
     [SerializeField] TMP_Text text_warning;

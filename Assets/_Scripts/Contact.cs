@@ -8,17 +8,20 @@ public class Contact : MonoBehaviour
     public string username;
     public Sprite image;
 
-    [Header("Chat List")]
-    public List<MessageType> type;
-    public List<int> contentID;
-    public List<float> timeSent;
-    public List<Message> chat = new();
-
     [Header("Message Data")]
     public List<Sprite> memes = new();
     public List<string> warning = new();
     public List<Sprite> angry = new();
-    public string block;
+
+    [Header("Divider")]
+    [SerializeField] bool divider;
+
+    [Header("Chat List")]
+    public List<MessageType> type;
+    public List<int> contentID;
+    public List<float> timeSent;
+    public List<bool> liked;
+    public List<Message> messages = new();
 
     private void Awake()
     {
@@ -26,12 +29,32 @@ public class Contact : MonoBehaviour
         //CreateContentOnChatList(5);
     }
 
+    private void Start()
+    {
+        //InvokeRepeating(nameof(AddToChat), 0, 5f);
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Keypad0)) AddToChat();
+    }
+
+    private void AddToChat()
+    {
+        Message newMessage = new Message(MessageType.Meme, 0, 15, false);
+        messages.Add(newMessage);
+        
+        type.Add(MessageType.Warning);
+        contentID.Add(0);
+        timeSent.Add(15);
+        liked.Add(false);
+    }
+
     private void LoadContentToChatList()
     {
         for (int i = 0; i < type.Count; i++)
         {
-            Message newMessage = new Message(type[i], contentID[i], timeSent[i]);
-            chat.Add(newMessage);
+            Message newMessage = new Message(type[i], contentID[i], timeSent[i], liked[i]);
+            messages.Add(newMessage);
         }
     }
 
@@ -42,8 +65,9 @@ public class Contact : MonoBehaviour
             Message newMessage = new Message(
                 type[i], 
                 contentID[Random.Range(0, contentID.Count - 1)], 
-                timeSent[i]);
-            chat.Add(newMessage);
+                timeSent[i],
+                liked[i]);
+            messages.Add(newMessage);
         }
     }
 }

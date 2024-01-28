@@ -4,12 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Message_Block : MonoBehaviour
+public class Message_Block : Message_OnChat
 {
-    [Header("Message")]
-    public Contact contact;
-    public Message message;
-
     [Header("Components")]
     [SerializeField] TMP_Text text_Block;
 
@@ -24,7 +20,7 @@ public class Message_Block : MonoBehaviour
 
     private void SetComponentValues()
     {
-        text_Block.text = contact.username + contact.block;
+        text_Block.text = contact.username + GameConstants.BLOCK_MESSAGE;
     }
 
     private void SetVisibility(bool active)

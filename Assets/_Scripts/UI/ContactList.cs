@@ -11,6 +11,20 @@ public class ContactList : MonoBehaviour
     [SerializeField] GameObject chat_Expanded;
     [SerializeField] GameObject chat_Messages;
 
+    private void Start()
+    {
+        InvokeRepeating(nameof(UpdateList), 0, GameConstants.UPDATE_TIME);
+    }
+
+    public void UpdateList()
+    {
+        //Debug.Log("ContactList/UpdateList");
+        Chat_Listed[] chatListedComponents = GetComponentsInChildren<Chat_Listed>();
+        foreach (Chat_Listed chatListed in chatListedComponents)
+        {
+            chatListed.SetComponentValues();
+        }
+    }
     public void AddContactToList(Contact contact)
     {
         GameObject newListedChat = Instantiate(chat_Listed_Prefab, transform);

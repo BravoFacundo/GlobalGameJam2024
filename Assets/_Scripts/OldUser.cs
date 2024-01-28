@@ -52,7 +52,7 @@ public class OldUser : MonoBehaviour
     
     void Start()
     {
-        CheckForAnswer();
+        if (!isBlockingYou) CheckForAnswer();
     }
 
     void Update()

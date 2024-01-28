@@ -35,7 +35,8 @@ public class Chat_Listed : MonoBehaviour
         SetComponentValues();
     }
 
-    private void SetComponentValues()
+
+    public void SetComponentValues()
     {
         image.sprite = contact.image;
         username.text = contact.username;
@@ -64,25 +65,61 @@ public class Chat_Listed : MonoBehaviour
     public void OnButtonClicked()
     {
         chat_Expanded.SetActive(true);
+        chat_Messages.GetComponent<Chat_Messages>().chat_Listed = this;
+        AddMessagesToChat();
+    }
+    public void AddNewMessageToChat()
+    {
+        ClearChat(); //Deberia excluir los ya enviados no reiniciar la lista
+        AddMessagesToChat();
+    }
+    public void OnReturn()
+    {
+        chat_Expanded.SetActive(false);
+        chat_Messages.GetComponent<Chat_Messages>().chat_Listed = null;
+    }
 
-        for (int i = 0; i < contact.chat.Count; i++)
+    public void ClearChat()
+    {
+        int messageCount = chat_Messages.transform.childCount;
+        //Debug.Log(messageCount);
+        Message_OnChat[] message_OnChatComponents = chat_Messages.transform.GetComponentsInChildren<Message_OnChat>();
+
+        for (int i = 0; i < message_OnChatComponents.Length; i++)
         {
-            Debug.Log(contact.chat[i].type + " | " + contact.chat[i].contentID);
-            switch (contact.chat[i].type)
+            Message_OnChat message_OnChat = message_OnChatComponents[i];
+            //Debug.Log(message_OnChat.name);
+            contact.messages[0] = message_OnChat.contact.messages[0];
+            Debug.Log(contact.messages[0].liked);
+            Debug.Log(message_OnChat.contact.messages[0].liked);
+        }
+
+        foreach (Transform child in chat_Messages.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+    private void AddMessagesToChat()
+    {
+        for (int i = 0; i < contact.messages.Count; i++)
+        {            
+            switch (contact.messages[i].type)
             {
                 case MessageType.Meme:
-                    AddMemeToChat(contact.chat[i]);
+                    AddMemeToChat(contact.messages[i]);
                     break;
-                case MessageType.Warning:                    
-                    AddWarningToChat(contact.chat[i]);
+                case MessageType.Warning:
+                    AddWarningToChat(contact.messages[i]);
                     break;
                 case MessageType.Angry:
-                    AddAngryToChat(contact.chat[i]);
+                    AddAngryToChat(contact.messages[i]);
                     break;
                 case MessageType.Block:
-                    AddBlockToChat(contact.chat[i]);
+                    AddBlockToChat(contact.messages[i]);
                     break;
             }
+            //Debug.Log(contact.chat[i].type + " | " + contact.chat[i].contentID);
         }
     }
 
@@ -116,6 +153,7 @@ public class Chat_Listed : MonoBehaviour
         Message_Block newBlockScript = newBlock.GetComponent<Message_Block>();
 
         newBlockScript.contact = contact;
-        newBlockScript.message = message;
+        //newBlockScript.message = message;
     }
+    
 }

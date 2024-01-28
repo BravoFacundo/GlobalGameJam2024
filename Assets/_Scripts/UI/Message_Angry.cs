@@ -4,12 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Message_Angry : MonoBehaviour
+public class Message_Angry : Message_OnChat
 {
-    [Header("Message")]
-    public Contact contact;
-    public Message message;
-
     [Header("Components")]
     [SerializeField] Image bgImage;
     [SerializeField] Image Image_Icon;
