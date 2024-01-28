@@ -52,7 +52,6 @@ public class Message_Meme : Message_OnChat
     {
         Transform chat_Messages = transform.parent;
         int messageCount = chat_Messages.childCount;
-        Debug.Log(messageCount);
 
         Message_OnChat[] message_OnChatComponents = chat_Messages.GetComponentsInChildren<Message_OnChat>();
 

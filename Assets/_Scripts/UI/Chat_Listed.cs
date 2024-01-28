@@ -81,17 +81,16 @@ public class Chat_Listed : MonoBehaviour
 
     public void ClearChat()
     {
-        int messageCount = chat_Messages.transform.childCount;
-        //Debug.Log(messageCount);
+        int messageCount = chat_Messages.transform.childCount; //Debug.Log(messageCount);
         Message_OnChat[] message_OnChatComponents = chat_Messages.transform.GetComponentsInChildren<Message_OnChat>();
 
         for (int i = 0; i < message_OnChatComponents.Length; i++)
         {
             Message_OnChat message_OnChat = message_OnChatComponents[i];
             //Debug.Log(message_OnChat.name);
-            contact.messages[0] = message_OnChat.contact.messages[0];
-            Debug.Log(contact.messages[0].liked);
-            Debug.Log(message_OnChat.contact.messages[0].liked);
+            contact.messages[i] = message_OnChat.contact.messages[i];
+            //Debug.Log(contact.messages[0].liked);
+            //Debug.Log(message_OnChat.contact.messages[0].liked);
         }
 
         foreach (Transform child in chat_Messages.transform)

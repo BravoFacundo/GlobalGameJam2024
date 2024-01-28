@@ -9,7 +9,7 @@ public class ContactList : MonoBehaviour
 
     [Header("References")]
     [SerializeField] GameObject chat_Expanded;
-    [SerializeField] GameObject chat_Messages;
+    public GameObject chat_Messages;
 
     private void Start()
     {

@@ -20,7 +20,14 @@ public class GameManager : MonoBehaviour
         if (tutorialCompleted) StartCoroutine(nameof(StartDelay), 1f);
         else StartTutorial();
     }
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Keypad0))
+        {
+            tutorialContact.AddMessageToChat(MessageType.Meme, 0, 15, false);
+            contactList.chat_Messages.GetComponent<Chat_Messages>().UpdateMessages();
+        }
+    }
     //---------------------------------------------------------------------------------------------------------------
 
     private IEnumerator StartDelay(float time)
@@ -42,14 +49,24 @@ public class GameManager : MonoBehaviour
 
     private void StartTutorial()
     {
-        StartCoroutine(nameof(TutorialDelay));
+        StartCoroutine(nameof(Tutorial_Part1));
     }
-    private IEnumerator TutorialDelay()
+    private IEnumerator Tutorial_Part1()
     {
         yield return new WaitForSeconds(1f);
 
-        contactList.AddContactToList(tutorialContact);
         audioManager.PlayAudio_NewMessage();
+        contactList.AddContactToList(tutorialContact);
+
+        yield return new WaitForSeconds(1f);
+
+        tutorialContact.AddMessageToChat(MessageType.Meme, 0, 15, false);
+        contactList.chat_Messages.GetComponent<Chat_Messages>().UpdateMessages();
+        //tutorialContact.AddMessageToChat(MessageType.Meme, 0, 15, false);
+    }
+    private IEnumerator Tutorial_Part2()
+    {
+        yield return new WaitForSeconds(1f);
     }
 
 }

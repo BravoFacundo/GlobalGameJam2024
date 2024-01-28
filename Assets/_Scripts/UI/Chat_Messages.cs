@@ -12,24 +12,25 @@ public class Chat_Messages : MonoBehaviour
     [Header("Local References")]
     [SerializeField] Scrollbar scrollbar;
 
-    private void Start()
-    {
-        InvokeRepeating(nameof(UpdateMessages), 0, GameConstants.UPDATE_TIME);
-    }
     private void OnEnable()
     {
-        InvokeRepeating(nameof(UpdateMessages), 0, GameConstants.UPDATE_TIME);
+        StartCoroutine(nameof(OnEnabledDelayed));
+    }
+    private IEnumerator OnEnabledDelayed()
+    {
+        yield return new WaitForEndOfFrame();
+        UpdateMessages();
+        //InvokeRepeating(nameof(UpdateMessages), GameConstants.UPDATE_TIME, GameConstants.UPDATE_TIME);
     }
     private void OnDisable()
     {
         CancelInvoke(nameof(UpdateMessages));
     }
 
-    private void UpdateMessages()
+    public void UpdateMessages()
     {
-        if (gameObject.activeSelf)
+        if (gameObject.activeInHierarchy)
         {
-            //Debug.Log("Chat_Messages/UpdateMessages");
             chat_Listed.AddNewMessageToChat();
             scrollbar.value = 0f;
         }

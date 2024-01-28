@@ -33,20 +33,16 @@ public class Contact : MonoBehaviour
     {
         //InvokeRepeating(nameof(AddToChat), 0, 5f);
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Keypad0)) AddToChat();
-    }
 
-    private void AddToChat()
+    public void AddMessageToChat(MessageType messageType, int v1, float v2, bool v3)
     {
-        Message newMessage = new Message(MessageType.Meme, 0, 15, false);
+        Message newMessage = new Message(messageType, v1, v2, v3);
         messages.Add(newMessage);
         
-        type.Add(MessageType.Warning);
-        contentID.Add(0);
-        timeSent.Add(15);
-        liked.Add(false);
+        type.Add(messageType);
+        contentID.Add(v1);
+        timeSent.Add(v2);
+        liked.Add(v3);
     }
 
     private void LoadContentToChatList()
