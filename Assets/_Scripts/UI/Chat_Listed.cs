@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class Chat_Listed : MonoBehaviour
 {
@@ -18,29 +19,29 @@ public class Chat_Listed : MonoBehaviour
 
     [Header("References")]
     public GameObject chat_Expanded;
-    public GameObject chat_Messages;
-
-    [Header("Prefabs")]
-    [SerializeField] GameObject messagePrefab_Meme;
-    [SerializeField] GameObject messagePrefab_Warning;
-    [SerializeField] GameObject messagePrefab_Angry;
-    [SerializeField] GameObject messagePrefab_Block;
-
+    
     private void Awake() => SetVisibility(false);
-    private void Start() => StartCoroutine(StartDelay());
-    private IEnumerator StartDelay()
+    private void OnEnable() => StartCoroutine(nameof(OnEnableDelayed));
+    private IEnumerator OnEnableDelayed()
     {
         yield return new WaitForEndOfFrame();
+        contact.OnUpdatedContact += UpdateComponentValues;
+        UpdateComponentValues();
         SetVisibility(true);
-        SetComponentValues();
     }
+    private void OnDisable() => contact.OnUpdatedContact -= UpdateComponentValues;
 
-
-    public void SetComponentValues()
+    public void UpdateComponentValues()
     {
         image.sprite = contact.image;
         username.text = contact.username;
+        UpdateTimeComponent();
     }
+    private void UpdateTimeComponent()
+    {
+        time.text = "Received " + contact.timeSent[0].ToString() + " ago";
+    }
+
     private void SetVisibility(bool active)
     {
         if (active)
@@ -60,99 +61,31 @@ public class Chat_Listed : MonoBehaviour
             description.color = alphaNull;
             time.color = alphaNull;
         }        
-    }
+    }    
 
-    public void OnButtonClicked()
+    //---------- INPUTS -------------------------------------------------------------------------------------------------
+
+    public void OnChatPressed()
     {
         chat_Expanded.SetActive(true);
-        chat_Messages.GetComponent<Chat_Messages>().chat_Listed = this;
-        AddMessagesToChat();
+        var chat_Expanded_Script = chat_Expanded.GetComponent<Chat_Expanded>();
+        chat_Expanded_Script.contact = contact;
+        //StartCoroutine(nameof(OnChatPressed_Delayed));
     }
-    public void AddNewMessageToChat()
+    private IEnumerator OnChatPressed_Delayed()
     {
-        ClearChat(); //Deberia excluir los ya enviados no reiniciar la lista
-        AddMessagesToChat();
+        chat_Expanded.SetActive(true);
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(1f);
+        var chat_Expanded_Script = chat_Expanded.GetComponent<Chat_Expanded>();
+        //chat_Expanded_Script.contact = contact;
+        chat_Expanded.GetComponent<Chat_Expanded>().contact = contact;
+        //chat_Expanded_Script.UpdateMessages();
     }
-    public void OnReturn()
+    public void OnReturnPressed()
     {
         chat_Expanded.SetActive(false);
-        chat_Messages.GetComponent<Chat_Messages>().chat_Listed = null;
+        chat_Expanded.GetComponent<Chat_Expanded>().contact = null;
     }
 
-    public void ClearChat()
-    {
-        int messageCount = chat_Messages.transform.childCount; //Debug.Log(messageCount);
-        Message_OnChat[] message_OnChatComponents = chat_Messages.transform.GetComponentsInChildren<Message_OnChat>();
-
-        for (int i = 0; i < message_OnChatComponents.Length; i++)
-        {
-            Message_OnChat message_OnChat = message_OnChatComponents[i];
-            //Debug.Log(message_OnChat.name);
-            contact.messages[i] = message_OnChat.contact.messages[i];
-            //Debug.Log(contact.messages[0].liked);
-            //Debug.Log(message_OnChat.contact.messages[0].liked);
-        }
-
-        foreach (Transform child in chat_Messages.transform)
-        {
-            Destroy(child.gameObject);
-        }
-    }
-
-    private void AddMessagesToChat()
-    {
-        for (int i = 0; i < contact.messages.Count; i++)
-        {            
-            switch (contact.messages[i].type)
-            {
-                case MessageType.Meme:
-                    AddMemeToChat(contact.messages[i]);
-                    break;
-                case MessageType.Warning:
-                    AddWarningToChat(contact.messages[i]);
-                    break;
-                case MessageType.Angry:
-                    AddAngryToChat(contact.messages[i]);
-                    break;
-                case MessageType.Block:
-                    AddBlockToChat(contact.messages[i]);
-                    break;
-            }
-            //Debug.Log(contact.chat[i].type + " | " + contact.chat[i].contentID);
-        }
-    }
-
-    private void AddMemeToChat(Message message)
-    {
-        GameObject newMeme = Instantiate(messagePrefab_Meme, chat_Messages.transform);
-        Message_Meme newMemeScript = newMeme.GetComponent<Message_Meme>();
-
-        newMemeScript.contact = contact;
-        newMemeScript.message = message;
-    }
-    private void AddWarningToChat(Message message)
-    {
-        GameObject newWarning = Instantiate(messagePrefab_Warning, chat_Messages.transform);
-        Message_Warning newWarningScript = newWarning.GetComponent<Message_Warning>();
-
-        newWarningScript.contact = contact;
-        newWarningScript.message = message;
-    }
-    private void AddAngryToChat(Message message)
-    {
-        GameObject newAngry = Instantiate(messagePrefab_Angry, chat_Messages.transform);
-        Message_Angry newAngryScript = newAngry.GetComponent<Message_Angry>();
-
-        newAngryScript.contact = contact;
-        newAngryScript.message = message;
-    }
-    private void AddBlockToChat(Message message)
-    {
-        GameObject newBlock = Instantiate(messagePrefab_Block, chat_Messages.transform);
-        Message_Block newBlockScript = newBlock.GetComponent<Message_Block>();
-
-        newBlockScript.contact = contact;
-        //newBlockScript.message = message;
-    }
-    
 }

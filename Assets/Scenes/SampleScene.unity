@@ -123,6 +123,60 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &13612299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 13612300}
+  - component: {fileID: 13612301}
+  m_Layer: 0
+  m_Name: Pablo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &13612300
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13612299}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 78843300}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &13612301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13612299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88a0dc745dd934746a710b6c3c82ae0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  username: 
+  image: {fileID: 0}
+  memes: []
+  warning: []
+  angry: []
+  divider: 0
+  type: 
+  contentID: 
+  timeSent: []
+  liked: 
 --- !u!1 &31291533
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +229,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &68150167
 RectTransform:
   m_ObjectHideFlags: 0
@@ -284,6 +338,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 77265780}
   m_CullTransparentMesh: 1
+--- !u!1 &78843299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 78843300}
+  m_Layer: 0
+  m_Name: ChatsDataBase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &78843300
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78843299}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1880408838}
+  - {fileID: 470642341}
+  - {fileID: 13612300}
+  - {fileID: 216679035}
+  - {fileID: 476975980}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &126842173
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +445,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &155192556
 Transform:
   m_ObjectHideFlags: 0
@@ -392,11 +482,10 @@ MonoBehaviour:
   angry:
   - {fileID: 21300000, guid: f0237a281a9acc44591ad19e2df32253, type: 3}
   divider: 0
-  type: 00000000
-  contentID: 00000000
-  timeSent:
-  - 0
-  liked: 00
+  type: 
+  contentID: 
+  timeSent: []
+  liked: 
 --- !u!1 &183869590
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,7 +519,7 @@ RectTransform:
   m_Father: {fileID: 1071403822}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -508,6 +597,60 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &216679034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 216679035}
+  - component: {fileID: 216679036}
+  m_Layer: 0
+  m_Name: Maria
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &216679035
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216679034}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 78843300}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &216679036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216679034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88a0dc745dd934746a710b6c3c82ae0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  username: 
+  image: {fileID: 0}
+  memes: []
+  warning: []
+  angry: []
+  divider: 0
+  type: 
+  contentID: 
+  timeSent: []
+  liked: 
 --- !u!1 &345220436
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,6 +687,111 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &470642340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 470642341}
+  - component: {fileID: 470642342}
+  m_Layer: 0
+  m_Name: 'Pedro '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &470642341
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470642340}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 78843300}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &470642342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470642340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88a0dc745dd934746a710b6c3c82ae0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  username: 
+  image: {fileID: 0}
+  memes: []
+  warning: []
+  angry: []
+  divider: 0
+  type: 
+  contentID: 
+  timeSent: []
+  liked: 
+--- !u!1 &476975979
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 476975980}
+  - component: {fileID: 476975981}
+  m_Layer: 0
+  m_Name: Old User
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &476975980
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476975979}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 78843300}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &476975981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476975979}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1af13e857553fe42bc1d579b8365b28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  likeButton: 0
+  isBlockingYou: 0
+  sendTime: 0
+  answerTime: 0
+  unansweredCount: 3
+  memesSent: 0
+  memesLiked: 0
 --- !u!224 &486629473 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 249725998628102846, guid: 65c65c3c2959df64ba31fdde43d55ba4, type: 3}
@@ -664,7 +912,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 538899099}
-  - component: {fileID: 538899102}
   - component: {fileID: 538899101}
   - component: {fileID: 538899100}
   m_Layer: 5
@@ -733,21 +980,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
---- !u!114 &538899102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 538899098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e92800650c338814891e03a58fdcba13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chat_Listed_Prefab: {fileID: 1172299896435477723, guid: b05e0436e3552b84fbb8f59bc087f176, type: 3}
-  chat_Expanded: {fileID: 1929632946}
-  chat_Messages: {fileID: 1654873813}
 --- !u!224 &596638421 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8908261485951782495, guid: 34c682429f9ed49419e9ba7a715fb308, type: 3}
@@ -1602,7 +1834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1172299896435477723, guid: b05e0436e3552b84fbb8f59bc087f176, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2249140488730475481, guid: b05e0436e3552b84fbb8f59bc087f176, type: 3}
       propertyPath: m_Pivot.x
@@ -1740,12 +1972,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialCompleted: 0
   tutorialContact: {fileID: 155192557}
-  Contacts:
+  contacts:
   - {fileID: 1576399262}
   - {fileID: 126842174}
   - {fileID: 860993225}
-  contactList: {fileID: 538899102}
   audioManager: {fileID: 892676402}
+  chat_List: {fileID: 1802709960}
+  chat_Expanded: {fileID: 1929632950}
 --- !u!1 &1275588756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1755,8 +1988,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1275588757}
+  - component: {fileID: 1275588758}
   m_Layer: 5
-  m_Name: 02 - Juego
+  m_Name: 02 - Chats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1784,6 +2018,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1275588758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275588756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f732475c5e39b47ae7d4f516bca053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1331612201
 GameObject:
   m_ObjectHideFlags: 0
@@ -2090,6 +2336,7 @@ Transform:
   - {fileID: 1576399261}
   - {fileID: 126842176}
   - {fileID: 860993227}
+  - {fileID: 1706717563}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1432679376
@@ -2299,8 +2546,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 223e34c27ee80db42875676c53e1529e, type: 3}
   - {fileID: 21300000, guid: 223e34c27ee80db42875676c53e1529e, type: 3}
   - {fileID: 21300000, guid: 223e34c27ee80db42875676c53e1529e, type: 3}
-  - {fileID: 21300000, guid: 223e34c27ee80db42875676c53e1529e, type: 3}
-  - {fileID: 21300000, guid: 223e34c27ee80db42875676c53e1529e, type: 3}
   warning:
   - "\"Mir\xE1 mi meme\""
   - "\"Te gust\xF3 mi meme?\""
@@ -2308,11 +2553,14 @@ MonoBehaviour:
   angry:
   - {fileID: 21300000, guid: f0237a281a9acc44591ad19e2df32253, type: 3}
   divider: 0
-  type: 000000000000000000000000010000000200000003000000
-  contentID: 000000000100000002000000000000000000000000000000
+  type: 00000000010000000200000003000000
+  contentID: 00000000000000000000000000000000
   timeSent:
   - 15
-  liked: 00
+  - 15
+  - 15
+  - 15
+  liked: 00000000
 --- !u!1 &1608982952
 GameObject:
   m_ObjectHideFlags: 0
@@ -2472,11 +2720,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1654873814}
-  - component: {fileID: 1654873817}
   - component: {fileID: 1654873816}
   - component: {fileID: 1654873815}
   m_Layer: 5
-  m_Name: ChatMessages
+  m_Name: Messages_List
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2541,20 +2788,57 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
---- !u!114 &1654873817
+--- !u!1 &1706717562
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1706717563}
+  - component: {fileID: 1706717564}
+  m_Layer: 0
+  m_Name: Old User
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1706717563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706717562}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1428003794}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1706717564
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1654873813}
-  m_Enabled: 1
+  m_GameObject: {fileID: 1706717562}
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 018a77aa6c907b34e905a8ff13142db7, type: 3}
+  m_Script: {fileID: 11500000, guid: d1af13e857553fe42bc1d579b8365b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chat_Listed: {fileID: 0}
-  scrollbar: {fileID: 1801970197}
+  likeButton: 0
+  isBlockingYou: 0
+  sendTime: 0
+  answerTime: 0
+  unansweredCount: 3
+  memesSent: 0
+  memesLiked: 0
 --- !u!1 &1801970195
 GameObject:
   m_ObjectHideFlags: 0
@@ -2601,7 +2885,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1801970195}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
   m_Name: 
@@ -2691,6 +2975,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1802709957}
   - component: {fileID: 1802709959}
+  - component: {fileID: 1802709960}
   - component: {fileID: 1802709958}
   m_Layer: 5
   m_Name: Chat_List
@@ -2757,6 +3042,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802709956}
   m_CullTransparentMesh: 1
+--- !u!114 &1802709960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802709956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b6380b1d9f14944dae1aee3d7a78aac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chat_Listed_Prefab: {fileID: 1172299896435477723, guid: b05e0436e3552b84fbb8f59bc087f176, type: 3}
+  contact_List: {fileID: 538899098}
+  chat_Expanded: {fileID: 1929632946}
 --- !u!1 &1805133321
 GameObject:
   m_ObjectHideFlags: 0
@@ -3028,6 +3328,64 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1880408837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1880408838}
+  - component: {fileID: 1880408839}
+  m_Layer: 0
+  m_Name: Tuto Rial
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1880408838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880408837}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 78843300}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1880408839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880408837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88a0dc745dd934746a710b6c3c82ae0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  username: Tuto Rial
+  image: {fileID: 21300000, guid: c3f07da012166a34281b9cb5bf5def20, type: 3}
+  memes:
+  - {fileID: 21300000, guid: 223e34c27ee80db42875676c53e1529e, type: 3}
+  warning:
+  - Dale like a mi meme
+  angry:
+  - {fileID: 21300000, guid: f0237a281a9acc44591ad19e2df32253, type: 3}
+  divider: 0
+  type: 00000000
+  contentID: 00000000
+  timeSent:
+  - 0
+  liked: 00
 --- !u!1 &1929632946
 GameObject:
   m_ObjectHideFlags: 0
@@ -3038,6 +3396,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1929632947}
   - component: {fileID: 1929632949}
+  - component: {fileID: 1929632950}
   - component: {fileID: 1929632948}
   m_Layer: 5
   m_Name: Chat_Expanded
@@ -3105,6 +3464,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1929632946}
   m_CullTransparentMesh: 1
+--- !u!114 &1929632950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929632946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abe5f0e5a0f905841bbd882b86c27721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contact: {fileID: 0}
+  messagePrefab_Meme: {fileID: 2204689186856660978, guid: 5405951be047da54aac63611b8cae28e, type: 3}
+  messagePrefab_Warning: {fileID: 6511485909233330832, guid: 34c682429f9ed49419e9ba7a715fb308, type: 3}
+  messagePrefab_Angry: {fileID: 3138218898408945246, guid: 65c65c3c2959df64ba31fdde43d55ba4, type: 3}
+  messagePrefab_Block: {fileID: 1772624591965099965, guid: 7cc26a3a6286efb4d85c18572972f5ab, type: 3}
+  messages_List: {fileID: 1654873813}
+  scrollbar: {fileID: 1801970197}
 --- !u!1 &2097734987
 GameObject:
   m_ObjectHideFlags: 0
@@ -3283,9 +3661,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1654873817}
-        m_TargetAssemblyTypeName: Chat_Messages, Assembly-CSharp
-        m_MethodName: OnButtonBackClicked
+      - m_Target: {fileID: 1929632950}
+        m_TargetAssemblyTypeName: Chat_Expanded, Assembly-CSharp
+        m_MethodName: OnReturnPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3427,7 +3805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3138218898408945246, guid: 65c65c3c2959df64ba31fdde43d55ba4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3448,7 +3826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1772624591965099965, guid: 7cc26a3a6286efb4d85c18572972f5ab, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4654023685196853852, guid: 7cc26a3a6286efb4d85c18572972f5ab, type: 3}
       propertyPath: m_Pivot.x
@@ -3629,7 +4007,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2204689186856660978, guid: 5405951be047da54aac63611b8cae28e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3650,7 +4028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511485909233330832, guid: 34c682429f9ed49419e9ba7a715fb308, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8908261485951782495, guid: 34c682429f9ed49419e9ba7a715fb308, type: 3}
       propertyPath: m_Pivot.x
@@ -3745,6 +4123,7 @@ SceneRoots:
   - {fileID: 1088094431}
   - {fileID: 983168945}
   - {fileID: 1428003794}
+  - {fileID: 78843300}
   - {fileID: 755696830}
   - {fileID: 520601518}
   - {fileID: 963194228}

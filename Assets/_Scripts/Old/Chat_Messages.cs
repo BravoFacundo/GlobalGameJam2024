@@ -31,14 +31,14 @@ public class Chat_Messages : MonoBehaviour
     {
         if (gameObject.activeInHierarchy)
         {
-            chat_Listed.AddNewMessageToChat();
+            //chat_Listed.AddNewMessageToChat();
             scrollbar.value = 0f;
         }
     }
 
     public void OnButtonBackClicked()
     {
-        chat_Listed.OnReturn();
+        chat_Listed.OnReturnPressed();
     }
 
 }

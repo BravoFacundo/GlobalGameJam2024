@@ -12,22 +12,16 @@ public class Message_Meme : Message_OnChat
     [SerializeField] TMP_Text time;
     [SerializeField] Image likedImage;
 
-    private void Awake() => SetVisibility(false);
-    private void Start() => StartCoroutine(StartDelay());
-    private IEnumerator StartDelay()
-    {
-        yield return new WaitForEndOfFrame();
-        SetVisibility(true);
-        SetComponentValues();
-    }
+    [Header("References")]
+    public Transform messages_List;
 
-    private void SetComponentValues()
+    public override void UpdateComponentValues()
     {
         image.sprite = contact.memes[message.contentID];
         time.text = message.timeSent.ToString();
     }
 
-    private void SetVisibility(bool active)
+    public override void SetVisibility(bool active)
     {
         Color alphaNull = new(0, 0, 0, 0);
 
@@ -50,13 +44,14 @@ public class Message_Meme : Message_OnChat
 
     public void OnButtonClicked()
     {
-        Transform chat_Messages = transform.parent;
-        int messageCount = chat_Messages.childCount;
+        Debug.Log(messages_List);
+        int messageCount = messages_List.childCount;
 
-        Message_OnChat[] message_OnChatComponents = chat_Messages.GetComponentsInChildren<Message_OnChat>();
+        Message_OnChat[] message_OnChatComponents = messages_List.GetComponentsInChildren<Message_OnChat>();
 
         foreach (Message_OnChat message_OnChat in message_OnChatComponents)
         {
+            Debug.Log(message_OnChat.message);
             if (message_OnChat.message.type == MessageType.Meme)
             {
                 message_OnChat.contact.messages[messageCount-1].liked = true;

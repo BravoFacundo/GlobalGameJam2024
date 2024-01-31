@@ -9,11 +9,13 @@ public class GameManager : MonoBehaviour
 
     [Header("Contacts")]
     [SerializeField] Contact tutorialContact;
-    public List<Contact> Contacts = new();
+    public List<Contact> contacts = new();
 
     [Header("References")]
-    [SerializeField] ContactList contactList;
     [SerializeField] AudioManager audioManager;
+
+    public Chat_List chat_List;
+    public Chat_Expanded chat_Expanded;
 
     void Start()
     {
@@ -25,7 +27,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Keypad0))
         {
             tutorialContact.AddMessageToChat(MessageType.Meme, 0, 15, false);
-            contactList.chat_Messages.GetComponent<Chat_Messages>().UpdateMessages();
+            //contactList.chat_Messages.GetComponent<Chat_Messages>().UpdateMessages();
         }
     }
     //---------------------------------------------------------------------------------------------------------------
@@ -37,10 +39,11 @@ public class GameManager : MonoBehaviour
     }
     private void StartGame()
     {
-        contactList.ClearList();
-        for (int i = 0; i < Contacts.Count; i++)
+        chat_List.ClearList();        
+        for (int i = 0; i < contacts.Count; i++)
         {
-            contactList.AddContactToList(Contacts[i]);
+            contacts[i].gameObject.SetActive(true);
+            chat_List.AddContactToList(contacts[i]);
             audioManager.PlayAudio_NewMessage();
         }
     }
@@ -56,12 +59,12 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         audioManager.PlayAudio_NewMessage();
-        contactList.AddContactToList(tutorialContact);
+        tutorialContact.AddMessageToChat(MessageType.Meme, 0, 15, false);
+        chat_List.AddContactToList(tutorialContact);
 
         yield return new WaitForSeconds(1f);
 
-        tutorialContact.AddMessageToChat(MessageType.Meme, 0, 15, false);
-        contactList.chat_Messages.GetComponent<Chat_Messages>().UpdateMessages();
+        //contactList.chat_Messages.GetComponent<Chat_Messages>().UpdateMessages();
         //tutorialContact.AddMessageToChat(MessageType.Meme, 0, 15, false);
     }
     private IEnumerator Tutorial_Part2()

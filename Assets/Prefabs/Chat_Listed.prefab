@@ -145,11 +145,6 @@ MonoBehaviour:
   description: {fileID: 3889891599305392439}
   time: {fileID: 7184221523741467521}
   chat_Expanded: {fileID: 0}
-  chat_Messages: {fileID: 0}
-  messagePrefab_Meme: {fileID: 2204689186856660978, guid: 5405951be047da54aac63611b8cae28e, type: 3}
-  messagePrefab_Warning: {fileID: 6511485909233330832, guid: 34c682429f9ed49419e9ba7a715fb308, type: 3}
-  messagePrefab_Angry: {fileID: 3138218898408945246, guid: 65c65c3c2959df64ba31fdde43d55ba4, type: 3}
-  messagePrefab_Block: {fileID: 1772624591965099965, guid: 7cc26a3a6286efb4d85c18572972f5ab, type: 3}
 --- !u!114 &6391483001488590737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,7 +221,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6785657344146051325}
         m_TargetAssemblyTypeName: Chat_Listed, Assembly-CSharp
-        m_MethodName: OnButtonClicked
+        m_MethodName: OnChatPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -270,8 +265,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -150, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -225.86609, y: 0}
+  m_SizeDelta: {x: 351.7322, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6979067020800769251
 CanvasRenderer:

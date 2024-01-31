@@ -9,21 +9,12 @@ public class Message_Block : Message_OnChat
     [Header("Components")]
     [SerializeField] TMP_Text text_Block;
 
-    private void Awake() => SetVisibility(false);
-    private void Start() => StartCoroutine(StartDelay());
-    private IEnumerator StartDelay()
-    {
-        yield return new WaitForEndOfFrame();
-        SetVisibility(true);
-        SetComponentValues();
-    }
-
-    private void SetComponentValues()
+    public override void UpdateComponentValues()
     {
         text_Block.text = contact.username + GameConstants.BLOCK_MESSAGE;
     }
 
-    private void SetVisibility(bool active)
+    public override void SetVisibility(bool active)
     {
         if (active)
         {

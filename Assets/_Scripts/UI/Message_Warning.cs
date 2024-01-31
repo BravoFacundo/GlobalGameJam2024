@@ -11,22 +11,13 @@ public class Message_Warning : Message_OnChat
     [SerializeField] TMP_Text text_warning;
     [SerializeField] TMP_Text text_time;
 
-    private void Awake() => SetVisibility(false);
-    private void Start() => StartCoroutine(StartDelay());
-    private IEnumerator StartDelay()
-    {
-        yield return new WaitForEndOfFrame();
-        SetVisibility(true);
-        SetComponentValues();
-    }
-
-    private void SetComponentValues()
+    public override void UpdateComponentValues()
     {
         text_warning.text = contact.warning[message.contentID];
         text_time.text = message.timeSent.ToString();
     }
 
-    private void SetVisibility(bool active)
+    public override void SetVisibility(bool active)
     {
         if (active)
         {
