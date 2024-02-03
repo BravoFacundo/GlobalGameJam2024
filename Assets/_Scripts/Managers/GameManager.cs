@@ -42,12 +42,12 @@ public class GameManager : MonoBehaviour
         {
             for (int i = 0; i > contacts.Count; i++)
             {
-                if (contacts[i].messages[^1].type == MessageType.Block) Debug.Log("Loose");
+                if (contacts[i]._messageType[^1] == MessageType.Block) Debug.Log("Loose");
             }
         }
         else
         {
-            if (tutorialContact.messages.Count > 0 && tutorialContact.messages[^1].type == MessageType.Block) Debug.Log("Loose");
+            if (tutorialContact._messageType.Count > 0 && tutorialContact._messageType[^1] == MessageType.Block) Debug.Log("Loose");
         }
     }
 

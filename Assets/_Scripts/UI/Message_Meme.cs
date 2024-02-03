@@ -17,8 +17,8 @@ public class Message_Meme : Message_OnChat
 
     public override void UpdateComponentValues()
     {
-        image.sprite = contact.memes[message.contentID];
-        time.text = message.timeSent.ToString();
+        image.sprite = contact.memes[contact._contentID[messageIndex]]; //message.contentID
+        time.text = contact._timeSent[messageIndex].ToString();
     }
 
     public override void SetVisibility(bool active)
@@ -30,7 +30,7 @@ public class Message_Meme : Message_OnChat
             bgImage.color = Color.gray;
             image.color = Color.white;
             time.color = Color.white;
-            if (message.liked) likedImage.color = Color.white;
+            if (contact._messageLiked[messageIndex]) likedImage.color = Color.white;
         }
         else
         {            
@@ -50,10 +50,9 @@ public class Message_Meme : Message_OnChat
 
         foreach (Message_OnChat message_OnChat in message_OnChatComponents)
         {
-            Debug.Log(message_OnChat.message);
-            if (message_OnChat.message.type == MessageType.Meme)
+            if (message_OnChat.contact._messageType[messageIndex] == MessageType.Meme)
             {
-                message_OnChat.contact.messages[messageCount-1].liked = true;
+                message_OnChat.contact._messageLiked[messageCount-1] = true;
             }
         }
 

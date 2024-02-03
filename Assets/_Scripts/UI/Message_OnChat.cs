@@ -6,7 +6,7 @@ public class Message_OnChat : MonoBehaviour
 {
     [Header("Message")]
     public Contact contact;
-    public Message message;
+    public int messageIndex;
 
     private void Awake() => SetVisibility(false);
     public virtual void OnEnable() => StartCoroutine(nameof(OnEnableDelayed));

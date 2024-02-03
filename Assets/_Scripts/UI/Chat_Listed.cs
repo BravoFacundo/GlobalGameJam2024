@@ -40,11 +40,32 @@ public class Chat_Listed : MonoBehaviour
     }
     private void UpdateDescriptionComponent()
     {
-        description.text = "Sent you 1 " + contact.type[contact.type.Count-1].ToString();
+        switch (contact._messageType[^1])
+        {
+            case MessageType.Meme:
+                var messageTypeCount = 0;
+                for (int i = 0; i < contact._messageType.Count; i++)
+                {
+                    if (contact._messageType[i] == MessageType.Meme) messageTypeCount += 1;
+                }
+                var messageTypeString = contact._messageType[^1].ToString();
+                description.text = "Sent you " + messageTypeCount + " " + messageTypeString + "'s";
+                break;
+            case MessageType.Warning:
+                var messageString = contact.warning[contact._contentID[^1]];
+                description.text = messageString;
+                break;
+            case MessageType.Angry:
+                description.text = "Sent you an Angry Emoji";
+                break;
+            case MessageType.Block:
+                description.text = "Te ha bloqueado";
+                break;
+        }
     }
     private void UpdateTimeComponent()
     {
-        var currentTime = GameManager.playTimeCount - contact.timeSent[^1];
+        var currentTime = GameManager.playTimeCount - contact._timeSent[^1];
         time.text = "Received " + currentTime.ToString() + " ago";
     }
 

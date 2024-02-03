@@ -412,11 +412,10 @@ MonoBehaviour:
   answerTime: 0
   memesSent: 0
   memesLiked: 0
-  type: 
-  contentID: 
-  timeSent:
-  - 0
-  liked: 00
+  _messageType: 
+  _contentID: 
+  _timeSent: []
+  _messageLiked: 
   memes: []
   warning: []
   angry: []
@@ -487,10 +486,10 @@ MonoBehaviour:
   answerTime: 5
   memesSent: 0
   memesLiked: 0
-  type: 
-  contentID: 
-  timeSent: []
-  liked: 
+  _messageType: 
+  _contentID: 
+  _timeSent: []
+  _messageLiked: 
   memes:
   - {fileID: 21300000, guid: 223e34c27ee80db42875676c53e1529e, type: 3}
   - {fileID: 21300000, guid: f0237a281a9acc44591ad19e2df32253, type: 3}
@@ -1310,11 +1309,10 @@ MonoBehaviour:
   answerTime: 0
   memesSent: 0
   memesLiked: 0
-  type: 
-  contentID: 
-  timeSent:
-  - 0
-  liked: 00
+  _messageType: 
+  _contentID: 
+  _timeSent: []
+  _messageLiked: 
   memes: []
   warning: []
   angry: []
@@ -2554,14 +2552,10 @@ MonoBehaviour:
   answerTime: 0
   memesSent: 0
   memesLiked: 0
-  type: 00000000010000000200000003000000
-  contentID: 00000000000000000000000000000000
-  timeSent:
-  - 15
-  - 15
-  - 15
-  - 15
-  liked: 00000000
+  _messageType: 
+  _contentID: 
+  _timeSent: []
+  _messageLiked: 
   memes:
   - {fileID: 21300000, guid: 223e34c27ee80db42875676c53e1529e, type: 3}
   - {fileID: 21300000, guid: 223e34c27ee80db42875676c53e1529e, type: 3}
@@ -3106,7 +3100,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -150}
-  m_SizeDelta: {x: 1080, y: 1587.8389}
+  m_SizeDelta: {x: 1080, y: 1750.3389}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1805133323
 MonoBehaviour:

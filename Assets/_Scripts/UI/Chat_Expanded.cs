@@ -25,70 +25,71 @@ public class Chat_Expanded : MonoBehaviour
     private IEnumerator OnEnabledDelayed()
     {
         yield return new WaitForEndOfFrame();
-        AddMessagesToChat();
-        //InvokeRepeating(nameof(AddMessagesToChat), 1, GameConstants.UPDATE_TIME);
+        contact.OnUpdatedContact += AddMessagesToChat;
     }
+    private void OnDisable() => contact.OnUpdatedContact -= AddMessagesToChat;
 
     public void AddMessagesToChat()
     {
         if (gameObject.activeInHierarchy)
         {
-            ClearChat();
-            scrollbar.value = 0f;
-            for (int i = 0; i < contact.messages.Count; i++)
+            //ClearChat();
+            int messageCount = messages_List.transform.childCount;
+            for (int i = 0; i < contact._messageType.Count - messageCount; i++)
             {
-                switch (contact.messages[i].type)
+                switch (contact._messageType[i + messageCount])
                 {
                     case MessageType.Meme:
-                        AddMemeToChat(contact.messages[i]);
+                        AddMemeToChat(i);
                         break;
                     case MessageType.Warning:
-                        AddWarningToChat(contact.messages[i]);
+                        AddWarningToChat(i);
                         break;
                     case MessageType.Angry:
-                        AddAngryToChat(contact.messages[i]);
+                        AddAngryToChat(i);
                         break;
                     case MessageType.Block:
-                        AddBlockToChat(contact.messages[i]);
+                        AddBlockToChat(i);
                         break;
                 }
             }
+            scrollbar.value = 0f;
         }
     }
     public void ClearChat() => Utilities.DeleteChilds(messages_List.transform);
 
-    private void AddMemeToChat(Message message)
+    private void AddMemeToChat(int messageIndex)
     {
         GameObject newMeme = Instantiate(messagePrefab_Meme, messages_List.transform);
         Message_Meme newMemeScript = newMeme.GetComponent<Message_Meme>();
 
         newMemeScript.contact = contact;
-        newMemeScript.message = message;
+        newMemeScript.messageIndex = messageIndex;
         newMemeScript.messages_List = messages_List.transform;
     }
-    private void AddWarningToChat(Message message)
+    private void AddWarningToChat(int messageIndex)
     {
         GameObject newWarning = Instantiate(messagePrefab_Warning, messages_List.transform);
         Message_Warning newWarningScript = newWarning.GetComponent<Message_Warning>();
 
         newWarningScript.contact = contact;
-        newWarningScript.message = message;
+        newWarningScript.messageIndex = messageIndex;
     }
-    private void AddAngryToChat(Message message)
+    private void AddAngryToChat(int messageIndex)
     {
         GameObject newAngry = Instantiate(messagePrefab_Angry, messages_List.transform);
         Message_Angry newAngryScript = newAngry.GetComponent<Message_Angry>();
 
         newAngryScript.contact = contact;
-        newAngryScript.message = message;
+        newAngryScript.messageIndex = messageIndex;
     }
-    private void AddBlockToChat(Message message)
+    private void AddBlockToChat(int messageIndex)
     {
         GameObject newBlock = Instantiate(messagePrefab_Block, messages_List.transform);
         Message_Block newBlockScript = newBlock.GetComponent<Message_Block>();
 
         newBlockScript.contact = contact;
-        newBlockScript.message = message;
+        newBlockScript.messageIndex = messageIndex;
     }
 
     public void OnReturnPressed()

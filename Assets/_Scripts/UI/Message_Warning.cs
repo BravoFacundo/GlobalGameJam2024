@@ -13,8 +13,8 @@ public class Message_Warning : Message_OnChat
 
     public override void UpdateComponentValues()
     {
-        text_warning.text = contact.warning[message.contentID];
-        text_time.text = message.timeSent.ToString();
+        text_warning.text = contact.warning[contact._contentID[messageIndex]];
+        text_time.text = contact._timeSent[messageIndex].ToString();
     }
 
     public override void SetVisibility(bool active)

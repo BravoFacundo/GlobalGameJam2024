@@ -13,8 +13,8 @@ public class Message_Angry : Message_OnChat
 
     public override void UpdateComponentValues()
     {
-        Image_Icon.sprite = contact.angry[message.contentID];
-        text_time.text = message.timeSent.ToString();
+        Image_Icon.sprite = contact.angry[contact._contentID[messageIndex]];
+        text_time.text = contact._timeSent[messageIndex].ToString();
     }
 
     public override void SetVisibility(bool active)

@@ -40,11 +40,11 @@ public class Chat_Notification : MonoBehaviour
     }
     private void UpdateDescriptionComponent()
     {
-        description.text = "Sent you 1 " + contact.type[contact.type.Count - 1].ToString();
+        description.text = "Sent you 1 " + contact._messageType[contact._messageType.Count - 1].ToString();
     }
     private void UpdateTimeComponent()
     {
-        time.text = "Received " + contact.timeSent[contact.timeSent.Count - 1].ToString() + " ago";
+        time.text = "Received " + contact._timeSent[contact._timeSent.Count - 1].ToString() + " ago";
     }
 
     private void SetVisibility(bool active)

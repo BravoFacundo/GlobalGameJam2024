@@ -19,12 +19,12 @@ public class Contact : MonoBehaviour
     public int memesLiked;
 
     [Header("Chat List")]
-    public List<MessageType> type;
-    public List<int> contentID;
-    public List<float> timeSent;
-    public List<bool> liked;
+    public List<MessageType> _messageType;
+    public List<int> _contentID;
+    public List<float> _timeSent;
+    public List<bool> _messageLiked;
 
-    public List<Message> messages = new();
+    //public List<Message> messages = new();
 
     [Space][Space][Space]
 
@@ -38,7 +38,7 @@ public class Contact : MonoBehaviour
 
     private void Awake()
     {
-        LoadContentToChatList();
+        //LoadContentToChatList();
     }
 
     private void Start()
@@ -53,17 +53,17 @@ public class Contact : MonoBehaviour
             OnUpdatedContact?.Invoke(); //Debug.Log("Updating Contact");
 
             memesSent = 0; memesLiked = 0;
-            for (int i = 0; i < messages.Count; i++)
+            for (int i = 0; i < _messageType.Count; i++)
             {
-                if (messages[i].type == MessageType.Meme)
+                if (_messageType[i] == MessageType.Meme)
                 {
                     memesSent += 1;
-                    if (messages[i].liked) memesLiked += 1;
+                    if (_messageLiked[i]) memesLiked += 1;
                 }
             }
-            if (memesSent > memesLiked && messages.Count != 0)
+            if (memesSent > memesLiked && _messageType.Count != 0)
             {
-                if (GameManager.playTimeCount - messages[^1].timeSent >= answerTime)
+                if (GameManager.playTimeCount - _timeSent[^1] >= answerTime)
                 {
                     unansweredCount -= 1; Debug.Log(unansweredCount);
                     switch (unansweredCount)
@@ -85,23 +85,23 @@ public class Contact : MonoBehaviour
 
 
 
-    public void AddMessageToChat(MessageType messageType, int _contentID, float _timeSent, bool _liked)
+    public void AddMessageToChat(MessageType _messageType, int _contentID, float _timeSent, bool _liked)
     {
-        Message newMessage = new(messageType, _contentID, _timeSent, _liked);
-        messages.Add(newMessage);
-        
-        type.Add(messageType);
-        contentID.Add(_contentID);
-        timeSent.Add(_timeSent);
-        liked.Add(_liked);
+        //Message newMessage = new(messageType, _contentID, _timeSent, _liked);
+        //messages.Add(newMessage);
+
+        this._messageType.Add(_messageType);
+        this._contentID.Add(_contentID);
+        this._timeSent.Add(_timeSent);
+        this._messageLiked.Add(_liked);
     }
 
     private void LoadContentToChatList()
     {
-        for (int i = 0; i < type.Count; i++)
+        for (int i = 0; i < _messageType.Count; i++)
         {
-            Message newMessage = new Message(type[i], contentID[i], timeSent[i], liked[i]);
-            messages.Add(newMessage);
+            Message newMessage = new Message(_messageType[i], _contentID[i], _timeSent[i], _messageLiked[i]);
+            //messages.Add(newMessage);
         }
     }
 
