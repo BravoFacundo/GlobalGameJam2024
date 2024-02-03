@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System;
 
-public class Chat_Listed : MonoBehaviour
+public class Chat_Notification : MonoBehaviour
 {
     [Header("Contact")]
     public Contact contact;
@@ -18,12 +17,13 @@ public class Chat_Listed : MonoBehaviour
     [SerializeField] TMP_Text time;
 
     [Header("References")]
-    public GameObject chat_Expanded;
-    
+    private GameObject chat_Expanded;
+
     private void Awake() => SetVisibility(false);
     private void OnEnable() => StartCoroutine(nameof(OnEnableDelayed));
     private IEnumerator OnEnableDelayed()
     {
+        chat_Expanded = GameObject.FindGameObjectWithTag("Chat_Expanded");
         yield return new WaitForEndOfFrame();
         contact.OnUpdatedContact += UpdateComponentValues;
         UpdateComponentValues();
@@ -40,12 +40,11 @@ public class Chat_Listed : MonoBehaviour
     }
     private void UpdateDescriptionComponent()
     {
-        description.text = "Sent you 1 " + contact.type[contact.type.Count-1].ToString();
+        description.text = "Sent you 1 " + contact.type[contact.type.Count - 1].ToString();
     }
     private void UpdateTimeComponent()
     {
-        var currentTime = GameManager.playTimeCount - contact.timeSent[^1];
-        time.text = "Received " + currentTime.ToString() + " ago";
+        time.text = "Received " + contact.timeSent[contact.timeSent.Count - 1].ToString() + " ago";
     }
 
     private void SetVisibility(bool active)
@@ -60,19 +59,20 @@ public class Chat_Listed : MonoBehaviour
         }
         else
         {
-            Color alphaNull = new Color(0,0,0,0);
+            Color alphaNull = new Color(0, 0, 0, 0);
             bgImage.color = alphaNull;
             image.color = alphaNull;
             username.color = alphaNull;
             description.color = alphaNull;
             time.color = alphaNull;
-        }        
-    }    
+        }
+    }
 
     //---------- INPUTS -------------------------------------------------------------------------------------------------
 
-    public void OnChatPressed()
+    public void OnNotificationPressed()
     {
+        chat_Expanded.SetActive(false);
         chat_Expanded.SetActive(true);
         var chat_Expanded_Script = chat_Expanded.GetComponent<Chat_Expanded>();
         chat_Expanded_Script.contact = contact;
@@ -93,5 +93,4 @@ public class Chat_Listed : MonoBehaviour
         chat_Expanded.SetActive(false);
         chat_Expanded.GetComponent<Chat_Expanded>().contact = null;
     }
-
 }

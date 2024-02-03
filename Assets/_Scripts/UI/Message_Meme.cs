@@ -44,7 +44,6 @@ public class Message_Meme : Message_OnChat
 
     public void OnButtonClicked()
     {
-        Debug.Log(messages_List);
         int messageCount = messages_List.childCount;
 
         Message_OnChat[] message_OnChatComponents = messages_List.GetComponentsInChildren<Message_OnChat>();

@@ -8,22 +8,30 @@ public class Contact : MonoBehaviour
     [Header("Contact Data")]
     public string username;
     public Sprite image;
-
-    [Header("Message Data")]
-    public List<Sprite> memes = new();
-    public List<string> warning = new();
-    public List<Sprite> angry = new();
-
-    [Header("Divider")]
-    [SerializeField] bool divider;
+    [Space]
+    public int unansweredCount = 3;
+    public bool isBlockingYou;
+    [Space]
+    public float sendTime;
+    public float answerTime;
+    [Space]
+    public int memesSent;
+    public int memesLiked;
 
     [Header("Chat List")]
     public List<MessageType> type;
     public List<int> contentID;
     public List<float> timeSent;
     public List<bool> liked;
-    
+
     public List<Message> messages = new();
+
+    [Space][Space][Space]
+
+    [Header("Message Data")]
+    public List<Sprite> memes = new();
+    public List<string> warning = new();
+    public List<Sprite> angry = new();
 
     public delegate void UpdateContactInformation();
     public event UpdateContactInformation OnUpdatedContact;
@@ -42,17 +50,40 @@ public class Contact : MonoBehaviour
     {
         if (gameObject.activeInHierarchy)
         {
-            //Debug.Log("Updating Contact");
+            OnUpdatedContact?.Invoke(); //Debug.Log("Updating Contact");
 
+            memesSent = 0; memesLiked = 0;
             for (int i = 0; i < messages.Count; i++)
             {
-                messages[i].timeSent += 1;
-                timeSent[i] += 1;
+                if (messages[i].type == MessageType.Meme)
+                {
+                    memesSent += 1;
+                    if (messages[i].liked) memesLiked += 1;
+                }
             }
-
-            OnUpdatedContact?.Invoke();
+            if (memesSent > memesLiked && messages.Count != 0)
+            {
+                if (GameManager.playTimeCount - messages[^1].timeSent >= answerTime)
+                {
+                    unansweredCount -= 1; Debug.Log(unansweredCount);
+                    switch (unansweredCount)
+                    {
+                        case 2:
+                            AddMessageToChat(MessageType.Warning, UnityEngine.Random.Range(0, warning.Count), GameManager.playTimeCount, false);
+                            break;
+                        case 1:
+                            AddMessageToChat(MessageType.Angry, UnityEngine.Random.Range(0, angry.Count), GameManager.playTimeCount, false);
+                            break;
+                        case 0:
+                            AddMessageToChat(MessageType.Block, 0, GameManager.playTimeCount, false);
+                            break;
+                    }
+                }
+            }           
         }
     }
+
+
 
     public void AddMessageToChat(MessageType messageType, int _contentID, float _timeSent, bool _liked)
     {
